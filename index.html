@@ -21,9 +21,14 @@
 
     <a href="https://codebeautify.org/base64-to-image-converter" target="_blank">To convert BASE64 hash back to images</a>
 
+    <h2>Mode</h2>
+    <p class="mode_indicator">
+        unknown
+    </p>
+
     <h2>Result:</h2>
     <p class="comp">
-        Comparison
+        unknown
     </p>
 
     <h2>test_function():</h2>
@@ -32,11 +37,14 @@
     <img class="secondpic" style='display:block; width:300px; height:300px;' id='base64image'/>
 
     <script>
-        f();
-        function f(){
-            getReadyWebGL('2d','main-canvas',512,512,1);
-            getReadyWebGLForCanvas('2d');
+        var mo = '3d';
+        f(mo);
+        function f(mode){
+            getReadyWebGL(mode,'main-canvas',512,512,1);
+            getReadyWebGLForCanvas(mode);
+            document.querySelector('.mode_indicator').innerHTML = mode;
         }
+
         test_function();
         var division = document.createElement("div");
         division.className = "leftHash";
