@@ -12,6 +12,7 @@
     <script src="visualizer/KineticJS.js"></script>
     <script src="visualizer/visualizer.js"></script>
     <script src="test_code.js"></script>
+    <script src="math.js"></script>
 </head>
 <body>
     
@@ -37,7 +38,7 @@
     <img class="secondpic" style='display:block; width:300px; height:300px;' id='base64image'/>
 
     <script>
-        var mo = '3d';
+        var mo = 'curve';
         f(mo);
         function f(mode){
             getReadyWebGL(mode,'main-canvas',512,512,1);
