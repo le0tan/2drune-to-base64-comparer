@@ -1,33 +1,43 @@
 function test_function(){
-    function s_generator(pt) {
-        const x = x_of(pt);
-        const y = y_of(pt);
-        function helper(t){
-            if(t <= 1/2){
-                const term1 = (t * 2 * (3 / 4));
-                return make_point(math_cos(2 * math_PI * term1),
-                                  math_sin(2 * math_PI * term1) + 1);
-            } else {
-                const term2 = -(t * 2 * (3 / 4));
-                return make_point(math_cos(2 * math_PI * term2),
-                                  math_sin(2 * math_PI * term2) - 1);
-            }
-        }
-        return helper;
+    // Task 2
+
+    function your_param_gosper(level, angle_at) {
+        return level === 0
+            ? unit_line
+            : (your_param_gosperize(angle_at(level)))
+            (your_param_gosper(level - 1, angle_at));
     }
-    
-    return (draw_connected_squeezed_to_window(200))(s_generator(make_point(0.5, 0.25)));
+
+    function your_param_gosperize(theta){
+        return curve => put_in_standard_position(
+                        // your solution here
+            connect_ends(curve, rotate_around_origin(-theta * 2)(curve)));
+    }
+
+    // testing
+    // return (draw_connected(200))(your_param_gosper(10, n => math_PI / (n + 2)));
+    return (draw_connected(200))(your_param_gosper(5, n => math_PI / 4 / math_pow(1.3, n)));
+
 }
 
 function target_function(){
-    function s_generator(pt) {
-        return t => t <= 0.5
-                    ? make_point(math_sin(0.5 * math_PI - 3 * math_PI * t) + x_of(pt),
-                                 math_cos(0.5 * math_PI - 3 * math_PI * t) + y_of(pt) + 1)
-                    : make_point(math_sin(3 * math_PI * (t - 0.5)) + x_of(pt),
-                                 math_cos(3 * math_PI * (t - 0.5)) + y_of(pt) - 1);
+    // Task 2
+
+    function your_param_gosper(level, angle_at) {
+        return level === 0
+            ? unit_line
+            : (your_param_gosperize(angle_at(level)))
+            (your_param_gosper(level - 1, angle_at));
     }
-    
-    // Test
-    return (draw_connected_squeezed_to_window(200))(s_generator(make_point(0.5, 0.25)));       
+
+    function your_param_gosperize(theta){
+        return curve => put_in_standard_position(
+                        // your solution here
+            connect_ends((rotate_around_origin(theta))(curve),
+                        (rotate_around_origin(-theta))(curve)));
+    }
+
+    // testing
+    // return (draw_connected(200))(your_param_gosper(10, n => math_PI / (n + 2)));
+    return (draw_connected(200))(your_param_gosper(5, n => math_PI / 4 / math_pow(1.3, n)));
 }

@@ -6,4 +6,8 @@ function math_cos(a){
     return Math.cos(a);
 }
 
+function math_pow(a,b){
+    return Math.pow(a,b);
+}
+
 const math_PI = Math.PI;
